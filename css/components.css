@@ -1,0 +1,156 @@
+/**
+ * Keyboard Tester - Components Styles
+ * 
+ * LED, modal de chattering, statistiques, boutons, sélecteurs
+ * 
+ * @license GPL-3.0
+ */
+
+/* ==================== LED INDICATORS ==================== */
+
+.led-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.led {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0f3460;
+  border: 2px solid #2a5298;
+  transition: all 0.3s;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.led.active {
+  background: #4ecca3;
+  border-color: #4ecca3;
+  box-shadow: 0 0 15px #4ecca3, inset 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* ==================== MODAL OVERLAY (Chattering) ==================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #ff6b6b;
+  padding: 30px 40px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+  0% { 
+    transform: scale(0.8); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+.modal-content strong {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.modal-content div {
+  font-size: 16px;
+}
+
+/* ==================== STATISTIQUES ==================== */
+
+.stats {
+  text-align: center;
+  padding: 20px;
+  background: #16213e;
+  border-radius: 10px;
+  border: 2px solid #0f3460;
+}
+
+.stats-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: #4ecca3;
+}
+
+.stats-total {
+  font-size: 18px;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* ==================== BOUTONS ==================== */
+
+button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+#resetBtn {
+  background: #ff6b6b;
+}
+
+#resetBtn:hover {
+  background: #ff5252;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+/* ==================== SÉLECTEUR DE LAYOUT ==================== */
+
+#layoutSelector {
+  padding: 8px 15px;
+  background: #16213e;
+  color: #eee;
+  border: 2px solid #0f3460;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#layoutSelector:hover {
+  border-color: #4ecca3;
+}
+
+#layoutSelector:focus {
+  outline: none;
+  border-color: #4ecca3;
+  box-shadow: 0 0 10px rgba(78, 204, 163, 0.3);
+}
