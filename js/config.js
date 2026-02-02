@@ -1,5 +1,5 @@
 /**
- * Keyboard Tester - Configuration
+ * Joypad Tester - Configuration
  * 
  * Constantes globales, seuils de détection, paramètres
  * 
@@ -8,56 +8,19 @@
 
 const CONFIG = {
   /**
-   * Seuil de détection de chattering en millisecondes
-   * Si deux appuis de la même touche sont séparés de moins de cette valeur,
-   * on considère qu'il y a un problème de double frappe (chattering)
+   * Seuil de détection d'un bouton pressé
    */
-  CHATTERING_THRESHOLD: 50,
+  BUTTON_ACTIVE_THRESHOLD: 0.5,
 
   /**
-   * Délai d'attente pour confirmer qu'un ControlLeft n'est pas un fantôme d'AltGr
-   * Sur certains systèmes, AltGr génère un événement ControlLeft fantôme ~1ms avant
-   * On attend 15ms pour voir si un AltGraph arrive derrière
+   * Zone morte des sticks analogiques
    */
-  ALTGR_DETECTION_DELAY: 15,
+  AXIS_DEADZONE: 0.25,
 
   /**
-   * Durée d'affichage de la modal de chattering en millisecondes
+   * Déplacement maximal du point du stick
    */
-  CHATTERING_MODAL_DURATION: 3000,
-
-  /**
-   * Layout par défaut au chargement de la page
-   */
-  DEFAULT_LAYOUT: 'azerty',
-
-  /**
-   * Touches modificatrices à exclure de la détection de chattering
-   * Ces touches sont souvent maintenues enfoncées et généreraient des faux positifs
-   */
-  MODIFIER_KEYS: [
-    'ShiftLeft', 
-    'ShiftRight', 
-    'ControlLeft', 
-    'ControlRight', 
-    'AltLeft', 
-    'AltRight', 
-    'MetaLeft', 
-    'MetaRight'
-  ],
-
-  /**
-   * Touches système à bloquer (preventDefault)
-   * Pour éviter les comportements par défaut du navigateur
-   */
-  SYSTEM_KEYS: [
-    'Escape', 'Tab', 'CapsLock', 'Enter', 'Backspace', 'Space', 
-    'ContextMenu', 'AltLeft', 'AltRight', 'ControlRight', 
-    'MetaLeft', 'MetaRight', 'ShiftLeft', 'ShiftRight', 
-    'PrintScreen', 'ScrollLock', 'Pause',
-    'Insert', 'Delete', 'Home', 'End', 'PageUp', 'PageDown',
-    'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'
-  ]
+  STICK_MAX_OFFSET: 18
 };
 
 // Geler la configuration pour éviter les modifications accidentelles

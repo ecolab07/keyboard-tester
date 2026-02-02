@@ -1,8 +1,8 @@
 /**
- * Keyboard Tester - Statistics Manager
+ * Joypad Tester - Statistics Manager
  * 
  * Gestion des statistiques d'utilisation
- * Comptage des touches testées, affichage du progrès
+ * Comptage des commandes testées, affichage du progrès
  * 
  * @license GPL-3.0
  */
@@ -21,35 +21,32 @@ const StatsElements = {
 function initStats() {
   StatsElements.testedCount = document.getElementById('testedCount');
   StatsElements.totalCount = document.getElementById('totalCount');
-  
-  // Afficher le nombre total de touches
-  const totalKeys = KeyboardState.keys.length;
+
+  const totalControls = GamepadState.controls.length;
   if (StatsElements.totalCount) {
-    StatsElements.totalCount.textContent = totalKeys;
+    StatsElements.totalCount.textContent = totalControls;
   }
-  
-  // Afficher le compteur initial
+
   updateStats();
-  
+
   console.log('✅ Statistiques initialisées');
 }
 
 /**
  * Met à jour l'affichage des statistiques
- * Compte le nombre de touches ayant la classe 'used'
+ * Compte le nombre de commandes ayant la classe 'used'
  */
 function updateStats() {
-  const testedCount = KeyboardState.keys.filter(k => k.classList.contains('used')).length;
-  
+  const testedCount = GamepadState.controls.filter(control => control.classList.contains('used')).length;
+
   if (StatsElements.testedCount) {
     StatsElements.testedCount.textContent = testedCount;
   }
-  
-  // Log de progression (tous les 10 touches)
-  if (testedCount % 10 === 0 && testedCount > 0) {
-    const totalKeys = KeyboardState.keys.length;
-    const percentage = Math.round((testedCount / totalKeys) * 100);
-    console.log(`📊 Progrès: ${testedCount}/${totalKeys} (${percentage}%)`);
+
+  if (testedCount % 5 === 0 && testedCount > 0) {
+    const totalControls = GamepadState.controls.length;
+    const percentage = Math.round((testedCount / totalControls) * 100);
+    console.log(`📊 Progrès: ${testedCount}/${totalControls} (${percentage}%)`);
   }
 }
 

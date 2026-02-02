@@ -1,0 +1,211 @@
+/**
+ * Joypad Tester - Gamepad Styles
+ * 
+ * Styles des commandes, états (actif, testé)
+ * Représentation graphique de la manette
+ * 
+ * @license GPL-3.0
+ */
+
+.control {
+  background: #16213e;
+  border: 2px solid #0f3460;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 12px;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.control.active {
+  background: #4ecca3;
+  color: #0b0d14;
+  border-color: #4ecca3;
+  box-shadow: 0 4px 12px rgba(78, 204, 163, 0.4);
+}
+
+.control.used {
+  background: #2a5298;
+  border-color: #3d6bb3;
+}
+
+.controller {
+  background: #101629;
+  border: 2px solid #0f3460;
+  border-radius: 30px;
+  padding: 26px 30px 30px;
+  display: grid;
+  gap: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.shoulders,
+.triggers {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shoulder,
+.trigger {
+  min-width: 90px;
+  height: 42px;
+  font-weight: 600;
+}
+
+.controller-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: center;
+}
+
+.cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.center-cluster {
+  gap: 14px;
+}
+
+.center-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.center-buttons .small {
+  min-width: 72px;
+  height: 36px;
+  font-size: 11px;
+  border-radius: 20px;
+}
+
+.meta-note {
+  font-size: 11px;
+  color: #6d7ba3;
+  text-align: center;
+  max-width: 220px;
+}
+
+.stick-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stick {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #0f3460;
+  background: radial-gradient(circle at 30% 30%, #1f2a4f, #0f1732);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stick-dot {
+  width: 26px;
+  height: 26px;
+  background: #4ecca3;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s ease;
+}
+
+.stick-press {
+  min-width: 60px;
+  height: 32px;
+  border-radius: 16px;
+  font-size: 11px;
+}
+
+.dpad {
+  width: 120px;
+  height: 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.dpad .button {
+  width: 100%;
+  height: 100%;
+}
+
+.dpad .up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.dpad .left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dpad .right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.dpad .down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.face-buttons {
+  width: 140px;
+  height: 140px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.face {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.face.a {
+  background: #0f3460;
+  border-color: #1f4d7d;
+}
+
+.face.b {
+  background: #0f3460;
+  border-color: #1f4d7d;
+}
+
+.face.x {
+  background: #0f3460;
+  border-color: #1f4d7d;
+}
+
+.face.y {
+  background: #0f3460;
+  border-color: #1f4d7d;
+}
+
+@media (max-width: 900px) {
+  .controller-body {
+    grid-template-columns: 1fr;
+  }
+
+  .shoulders,
+  .triggers {
+    flex-direction: column;
+  }
+}

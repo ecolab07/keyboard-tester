@@ -1,25 +1,23 @@
-# 🎹 Keyboard Tester
+# 🎮 Joypad Tester
 
-Un outil web complet pour tester tous les touches de votre clavier physique. Détecte les problèmes de double frappe (chattering), affiche l'état des touches de verrouillage, et supporte plusieurs layouts.
+Un outil web pour tester toutes les commandes d'un joypad (boutons, gâchettes, sticks) avec une représentation graphique fidèle. Basé sur l'apparence et les modules réutilisables de Keyboard Tester, ce projet est désormais orienté manettes.
 
 ## ✨ Fonctionnalités
 
-- **Test complet du clavier** : 105+ touches incluant pavé numérique, touches fonction, et navigation
-- **Détection AltGr** : Différencie correctement AltGr de Ctrl+Alt (avec gestion du fantôme ControlLeft)
-- **Détection de chattering** : Alerte en cas de double frappe involontaire (< 50ms)
-- **LED virtuelles** : Affichage de l'état Caps Lock, Num Lock, Scroll Lock
-- **Support multi-layouts** : AZERTY (FR), QWERTY (US/UK), BÉPO, AZERTY Apple
-- **Statistiques en temps réel** : Compteur de touches testées
-- **100% offline** : Aucune dépendance externe, fonctionne sans connexion
-- **Interface responsive** : Tout visible sans scroll
+- **Test complet du joypad** : boutons principaux, D-pad, L1/L2/R1/R2, Start/Select/Home
+- **Sticks analogiques** : visualisation en temps réel des positions des sticks
+- **Retour visuel immédiat** : chaque commande pressée devient active et se marque comme testée
+- **Statistiques en temps réel** : compteur de commandes testées
+- **100% offline** : aucune dépendance externe, fonctionne sans connexion
+- **Interface responsive** : la manette s'adapte aux écrans plus petits
 
 ## 🚀 Installation
 
 Aucune installation nécessaire ! Clonez simplement le dépôt et ouvrez `index.html` dans votre navigateur.
 
 ```bash
-git clone https://github.com/votre-username/keyboard-tester.git
-cd keyboard-tester
+git clone https://github.com/votre-username/joypad-tester.git
+cd joypad-tester
 # Ouvrez index.html dans votre navigateur préféré
 ```
 
@@ -27,36 +25,32 @@ Ou téléchargez directement et double-cliquez sur `index.html`.
 
 ## 📖 Utilisation
 
-1. Ouvrez `index.html` dans votre navigateur
-2. Sélectionnez votre layout de clavier (optionnel)
-3. Appuyez sur chaque touche de votre clavier
-4. Les touches testées deviennent bleues
+1. Branchez votre manette (USB/Bluetooth)
+2. Ouvrez `index.html` dans votre navigateur
+3. Appuyez sur chaque bouton, gâchette et stick
+4. Les commandes testées deviennent bleues
 5. Le compteur se met à jour en temps réel
 6. Cliquez sur "Réinitialiser" pour recommencer
 
-### Détection de problèmes
+### Conseils
 
-- **Chattering** : Si une touche produit des doubles frappes involontaires, une alerte modale apparaît
-- **LED** : Les voyants Caps/Num/Scroll s'allument automatiquement selon l'état de votre clavier
-- **Touches spéciales** : Print Screen, touches mortes (^), et AltGr sont correctement gérés
+- Les sticks se valident lorsqu'ils dépassent la zone morte (déplacement visible du point)
+- Certaines manettes nécessitent une interaction utilisateur avant d'être détectées par le navigateur
 
 ## 📁 Structure du projet
 
 ```
-keyboard-tester/
+joypad-tester/
 ├── index.html              # Page principale
 ├── css/
 │   ├── main.css           # Styles généraux
-│   ├── keyboard.css       # Styles du clavier et des touches
-│   └── components.css     # Styles des composants (LED, modal, stats)
+│   ├── gamepad.css        # Styles de la manette et des commandes
+│   └── components.css     # Styles des composants (stats, boutons, status)
 ├── js/
-│   ├── config.js          # Configuration globale (seuils, constantes)
-│   ├── layouts.js         # Définitions des layouts de clavier
-│   ├── keyboard.js        # Logique de détection et matching des touches
-│   ├── led-manager.js     # Gestion des LED de verrouillage
-│   ├── chattering.js      # Détection de double frappe
+│   ├── config.js          # Configuration globale
+│   ├── gamepad.js         # Logique de la manette (Gamepad API)
 │   ├── stats.js           # Gestion des statistiques
-│   ├── ui.js              # Gestion de l'interface (modal, reset)
+│   ├── ui.js              # Gestion de l'interface
 │   └── main.js            # Point d'entrée et initialisation
 ├── README.md              # Ce fichier
 └── LICENSE                # Licence GPL v3
@@ -66,13 +60,12 @@ keyboard-tester/
 
 - HTML5
 - CSS3 (Grid, Flexbox, Animations)
-- JavaScript ES6+ (Vanilla, pas de frameworks)
+- JavaScript ES6+ (Vanilla, Gamepad API)
 
 ## 🐛 Problèmes connus
 
-- **Print Screen** : Peut être capturé par le système d'exploitation avant le navigateur
-- **Touches mortes** : Certaines touches (^, ¨) peuvent ne pas s'activer immédiatement
-- **Layouts physiques** : Les codes de touches dépendent du layout physique du clavier, pas du layout logiciel
+- **Détection manette** : certains navigateurs exigent une interaction utilisateur pour activer la Gamepad API
+- **Mapping** : les boutons sont basés sur le mapping standard (XInput), les manettes exotiques peuvent varier
 
 ## 🤝 Contribuer
 
@@ -86,10 +79,9 @@ Les contributions sont les bienvenues !
 
 ### Idées de contributions
 
-- Ajouter plus de layouts (Dvorak, Colemak, etc.)
-- Améliorer la détection de layout physique
-- Ajouter l'export de rapport PDF
-- Support des claviers ergonomiques
+- Ajouter un mode de calibration des sticks
+- Afficher les valeurs analogiques exactes
+- Support des layouts PlayStation / Switch
 - Mode daltonien pour les couleurs
 
 ## 📜 Licence
@@ -98,14 +90,14 @@ Ce projet est sous licence GNU General Public License v3.0 - voir le fichier [LI
 
 ## 🙏 Remerciements
 
-- Inspiré par les outils de test de clavier en ligne
+- Basé sur l'outil Keyboard Tester
 - Développé avec ❤️ pour la communauté open source
 
 ## 📝 Changelog
 
+### v1.1 (2025-02-01)
+- Ajout de la représentation graphique de joypad
+- Support Gamepad API et sticks analogiques
+
 ### v1.0 (2025-02-01)
-- Version initiale
-- Support AZERTY, QWERTY, BÉPO
-- Détection AltGr et chattering
-- LED virtuelles
-- Interface complète sans scroll
+- Version initiale (base clavier issue de Keyboard Tester)

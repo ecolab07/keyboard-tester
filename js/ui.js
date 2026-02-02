@@ -1,47 +1,35 @@
 /**
- * Keyboard Tester - UI Manager
+ * Joypad Tester - UI Manager
  * 
  * Gestion de l'interface utilisateur
- * Bouton de réinitialisation, sélecteur de layout, etc.
+ * Bouton de réinitialisation, infos de connexion
  * 
  * @license GPL-3.0
  */
 
 /**
  * Réinitialise le test complet
- * Efface toutes les touches testées et réinitialise tous les modules
+ * Efface toutes les commandes testées et réinitialise les sticks
  */
 function resetTest() {
-  // Retirer toutes les classes 'used' et 'active' des touches
-  KeyboardState.keys.forEach(k => {
-    k.classList.remove('used', 'active');
+  GamepadState.controls.forEach(control => {
+    control.classList.remove('used', 'active');
   });
-  
-  // Réinitialiser les modules
-  resetChattering();
+
+  GamepadState.sticks.forEach(stick => resetStickPosition(stick));
   resetStats();
-  
+
   console.log('🔄 Test réinitialisé');
 }
 
 /**
  * Initialise les contrôles UI
- * Attache les event listeners aux boutons et sélecteurs
  */
 function initUI() {
-  // Bouton de réinitialisation
   const resetBtn = document.getElementById('resetBtn');
   if (resetBtn) {
     resetBtn.addEventListener('click', resetTest);
   }
-  
-  // Sélecteur de layout
-  const layoutSelector = document.getElementById('layoutSelector');
-  if (layoutSelector) {
-    layoutSelector.addEventListener('change', (e) => {
-      changeLayout(e.target.value);
-    });
-  }
-  
+
   console.log('✅ Interface utilisateur initialisée');
 }

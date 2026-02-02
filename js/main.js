@@ -1,5 +1,5 @@
 /**
- * Keyboard Tester - Main Entry Point
+ * Joypad Tester - Main Entry Point
  * 
  * Point d'entrée de l'application
  * Initialise tous les modules dans le bon ordre
@@ -13,28 +13,23 @@
  * Appelée au chargement du DOM
  */
 function initApp() {
-  console.log('🚀 Démarrage de Keyboard Tester v1.0');
-  
+  console.log('🚀 Démarrage de Joypad Tester v1.0');
+
   try {
-    // 1. Initialiser le clavier (doit être fait en premier)
-    initKeyboard();
-    
+    // 1. Initialiser le gamepad (doit être fait en premier)
+    initGamepad();
+
     // 2. Initialiser les statistiques
     initStats();
-    
-    // 3. Initialiser le gestionnaire de LED
-    initLEDManager();
-    
-    // 4. Initialiser l'interface utilisateur
+
+    // 3. Initialiser l'interface utilisateur
     initUI();
-    
-    // 5. Attacher les event listeners du clavier
-    attachKeyboardListeners();
-    
+
+    // 4. Attacher les event listeners gamepad
+    attachGamepadListeners();
+
     console.log('✅ Application initialisée avec succès');
-    console.log(`📊 ${KeyboardState.keys.length} touches détectées`);
-    console.log(`⌨️  Layout: ${LAYOUTS[KeyboardState.currentLayout].name}`);
-    
+    console.log(`🎮 ${GamepadState.controls.length} commandes disponibles`);
   } catch (error) {
     console.error('❌ Erreur lors de l\'initialisation:', error);
     alert('Une erreur est survenue lors du chargement de l\'application. Veuillez rafraîchir la page.');

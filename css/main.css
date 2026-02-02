@@ -1,5 +1,5 @@
 /**
- * Keyboard Tester - Main Styles
+ * Joypad Tester - Main Styles
  * 
  * Styles généraux, layout global, typographie
  * 
@@ -26,39 +26,29 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
 }
 
-/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.header-text {
+  flex: 1;
+}
+
 h1 {
   color: #4ecca3;
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 10px;
 }
 
 .subtitle {
-  text-align: center;
   color: #888;
   font-size: 14px;
-  margin-bottom: 20px;
-}
-
-/* Keyboard wrapper layout */
-.keyboard-wrapper {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.main-keyboard {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.row {
-  display: flex;
-  gap: 8px;
 }
